@@ -1,0 +1,12 @@
+apiVersion: 1
+
+datasources:
+  
+  - name: DispatcherMetrics
+    type: yesoreyeram-infinity-datasource
+    access: proxy
+    
+    url: http://dispatcher_service:8000
+    jsonData:
+      datasourceMode: default
+    editable: true
