@@ -1,0 +1,51 @@
+services:
+  dispatcher_service:
+    build: ./dispatcher_service
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
+
+  user_service:
+    build: ./user_service
+    expose:
+      - "8001"
+
+  product_service:
+    build: ./product_service
+    expose:
+      - "8002"
+
+  auth_service:
+    build: ./auth_service
+    ports:
+      - "8003:8003" 
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+
+  locust:
+    build: ./load_tests
+    ports:
+      - "8089:8089"
+    command: ["locust", "-f", "locustfile.py", "--host", "http://dispatcher_service:8000"]
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - prometheus
