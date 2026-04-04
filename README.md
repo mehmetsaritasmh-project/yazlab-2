@@ -95,6 +95,7 @@ Sonuç: Mikroservisten gelen yanıt, Dispatcher üzerinden güvenli bir şekilde
 
 3.3.2 Servisler Arası İletişim (Sequence Diagram)
 Kod snippet'i
+
 ```mermaid
 
 sequenceDiagram 
