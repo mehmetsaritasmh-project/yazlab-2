@@ -97,7 +97,6 @@ Sonuç: Mikroservisten gelen yanıt, Dispatcher üzerinden güvenli bir şekilde
 Kod snippet'i
 
 ```mermaid
-
 sequenceDiagram 
 autonumber 
 participant Client as İstemci (Client) 
