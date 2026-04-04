@@ -97,8 +97,8 @@ Sonuç: Mikroservisten gelen yanıt, Dispatcher üzerinden güvenli bir şekilde
 Kod snippet'i
 
 ```mermaid
-sequenceDiagram 
-autonumber 
+sequenceDiagram
+autonumber
 participant Client as İstemci (Client) 
 participant Dispatcher as Dispatcher Service (Port 8000) 
 participant Auth as Auth Service 
